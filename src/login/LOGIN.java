@@ -11,6 +11,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,17 +26,20 @@ import javax.swing.JTextField;
  */
 public class LOGIN extends JFrame implements ActionListener {
 
+    JTextField emailuserfield;
+JPasswordField loginpasswordfield;
     public static void main(String[] args) {
         new LOGIN();
     }
 
     public LOGIN() {
+        super("Daniel's Barbear");
         this.setVisible(true);
         this.setSize(800, 600);
         BorderLayout frameLayout = new BorderLayout();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(frameLayout);
-        this.setTitle("Daniel's Barbear");
+        
 
         //Header
         JPanel header = new JPanel();
@@ -47,27 +51,27 @@ public class LOGIN extends JFrame implements ActionListener {
         headerlabel.setLayout(GL1);
         this.add(header, BorderLayout.PAGE_START);
         initCreateaccount();
+
         //Login
         JPanel loginaccount = new JPanel();
-        BoxLayout loginbox =new BoxLayout (loginaccount, BoxLayout.Y_AXIS);
+        BoxLayout loginbox = new BoxLayout(loginaccount, BoxLayout.Y_AXIS);
         loginaccount.setLayout(loginbox);
-        
         this.add(loginaccount, BorderLayout.EAST);
         JLabel emailuser = new JLabel("e-mail user");
         loginaccount.add(emailuser);
-        JTextField emailuserfield = new JTextField(20);
-       emailuserfield.setMaximumSize(emailuserfield.getPreferredSize());
+        emailuserfield = new JTextField(20);
+        emailuserfield.setMaximumSize(emailuserfield.getPreferredSize());
         loginaccount.add(emailuserfield);
         JLabel loginpassword = new JLabel("Password");
         loginaccount.add(loginpassword);
-        JPasswordField loginpasswordfield = new JPasswordField(20);
+         loginpasswordfield = new JPasswordField(20);
         loginpasswordfield.setMaximumSize(loginpasswordfield.getPreferredSize());
         loginaccount.add(loginpasswordfield);
-        
+
         //Button Login
         JButton loginbutton = new JButton("Login");
         loginaccount.add(loginbutton);
-        
+        loginbutton.addActionListener(this);
 
         this.validate();
         this.repaint();
@@ -108,7 +112,16 @@ public class LOGIN extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       String email =  emailuserfield.getText();
+       String clientemail = "client" ;
+       char[] password = loginpasswordfield.getPassword();
+       char[] clientpassword = {'c','l','i','e','n','t'};
+       
+       if (clientemail.equals(email) && Arrays.equals(password, clientpassword))
+       {
+       this.dispose();
+       new Client();
+       }
     }
 
 }
