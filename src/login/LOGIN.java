@@ -49,9 +49,25 @@ public class LOGIN extends JFrame implements ActionListener {
         initCreateaccount();
         //Login
         JPanel loginaccount = new JPanel();
+        BoxLayout loginbox =new BoxLayout (loginaccount, BoxLayout.Y_AXIS);
+        loginaccount.setLayout(loginbox);
+        
         this.add(loginaccount, BorderLayout.EAST);
-        JLabel loginlabel = new JLabel("tes1");
-        loginaccount.add(loginlabel);
+        JLabel emailuser = new JLabel("e-mail user");
+        loginaccount.add(emailuser);
+        JTextField emailuserfield = new JTextField(20);
+       emailuserfield.setMaximumSize(emailuserfield.getPreferredSize());
+        loginaccount.add(emailuserfield);
+        JLabel loginpassword = new JLabel("Password");
+        loginaccount.add(loginpassword);
+        JPasswordField loginpasswordfield = new JPasswordField(20);
+        loginpasswordfield.setMaximumSize(loginpasswordfield.getPreferredSize());
+        loginaccount.add(loginpasswordfield);
+        
+        //Button Login
+        JButton loginbutton = new JButton("Login");
+        loginaccount.add(loginbutton);
+        
 
         this.validate();
         this.repaint();
@@ -84,7 +100,7 @@ public class LOGIN extends JFrame implements ActionListener {
         passwordfield.setMaximumSize(passwordfield.getPreferredSize());
         createaccountpanel.add(passwordfield);
 
-        //Button
+        //Button create account
         JButton createaccountbutton = new JButton("submit");
         createaccountpanel.add(createaccountbutton);
 
