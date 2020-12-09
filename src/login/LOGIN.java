@@ -27,7 +27,8 @@ import javax.swing.JTextField;
 public class LOGIN extends JFrame implements ActionListener {
 
     JTextField emailuserfield;
-JPasswordField loginpasswordfield;
+    JPasswordField loginpasswordfield;
+
     public static void main(String[] args) {
         new LOGIN();
     }
@@ -39,7 +40,6 @@ JPasswordField loginpasswordfield;
         BorderLayout frameLayout = new BorderLayout();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(frameLayout);
-        
 
         //Header
         JPanel header = new JPanel();
@@ -64,7 +64,7 @@ JPasswordField loginpasswordfield;
         loginaccount.add(emailuserfield);
         JLabel loginpassword = new JLabel("Password");
         loginaccount.add(loginpassword);
-         loginpasswordfield = new JPasswordField(20);
+        loginpasswordfield = new JPasswordField(20);
         loginpasswordfield.setMaximumSize(loginpasswordfield.getPreferredSize());
         loginaccount.add(loginpasswordfield);
 
@@ -112,16 +112,15 @@ JPasswordField loginpasswordfield;
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       String email =  emailuserfield.getText();
-       String clientemail = "client" ;
-       char[] password = loginpasswordfield.getPassword();
-       char[] clientpassword = {'c','l','i','e','n','t'};
-       
-       if (clientemail.equals(email) && Arrays.equals(password, clientpassword))
-       {
-       this.dispose();
-       new Client();
-       }
+        String email = emailuserfield.getText();
+        String clientemail = "client";
+        char[] password = loginpasswordfield.getPassword();
+        char[] clientpassword = {'c', 'l', 'i', 'e', 'n', 't'};
+
+        if (clientemail.equals(email) && Arrays.equals(password, clientpassword)) {
+            this.dispose();
+            new Client();
+        }
     }
 
 }
