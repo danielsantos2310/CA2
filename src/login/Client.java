@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -39,7 +40,7 @@ class Client extends JFrame implements ActionListener {
         this.add(clientest);
         GridLayout clientlayout = new GridLayout(1, 2);
         this.setLayout(clientlayout);
-        this.setSize(400, 300);
+        this.setSize(600, 300);
         this.setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -48,23 +49,25 @@ class Client extends JFrame implements ActionListener {
     
         // time pick
         JPanel timepanel =new JPanel();
-        BoxLayout timebox = new BoxLayout(timepanel, BoxLayout.Y_AXIS);
-        timepanel.setLayout(timebox);
-        this.add(timepanel, BorderLayout.EAST);
-//        BoxLayout timebox = new BoxLayout ();
+//        BoxLayout timebox = new BoxLayout(timepanel, BoxLayout.Y_AXIS);
+//        timepanel.setLayout(timebox);
+        this.add(timepanel, BorderLayout.CENTER);
         JLabel clientdate = new JLabel("Pick a Time");
-        this.add(clientdate);
+        timepanel.add(clientdate);
         String labels[] = {"08:00", "09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00", "18:00"};
         JList list = new JList(labels);
         JScrollPane scrollPane = new JScrollPane(list);
         Container contentPane = this.getContentPane();
-        contentPane.add(scrollPane, BorderLayout.CENTER);
-//        scrollPane.setMaximumSize(scrollPane.getPreferredSize());
+        timepanel.add(scrollPane);
+        scrollPane.setMaximumSize(scrollPane.getPreferredSize());
         
+        //        
         //time pick button
 //       
         JButton pickdaybutton = new JButton("Pick a Time");
-        this.add(pickdaybutton);
+        timepanel.add(pickdaybutton);
+//        this.add(pickdaybutton, BorderLayout.PAGE_START);
+//        pickdaybutton.setBounds(50, 50, 30, 30);
         //pickdaybutton.setMaximumSize(pickdaybutton.getPreferredSize());
         
         this.validate();
