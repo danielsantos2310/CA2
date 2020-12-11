@@ -32,7 +32,7 @@ class Client extends JFrame implements ActionListener {
 
     public Client() {
         this.setVisible(true);
-        this.setSize(800, 600);
+        this.setSize(1200, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
 
@@ -41,9 +41,8 @@ class Client extends JFrame implements ActionListener {
         JLabel monthlabel = new JLabel("pick a month");
         this.add(monthlabel);
         this.add(monthpanel);
-        
+
         //monthlistleft
-        
         JList Monthleft = new JList(month);
         monthpanel.add(Monthleft);
         Monthleft.setVisibleRowCount(3);
@@ -51,9 +50,8 @@ class Client extends JFrame implements ActionListener {
         JScrollPane jsml = new JScrollPane();
         monthpanel.add(jsml, Monthleft);
         monthpanel.add(jsml);
-        
+
         //monthlistright
-        
         JList monthright = new JList();
         monthpanel.add(monthright);
         monthright.setVisibleRowCount(3);
@@ -63,9 +61,8 @@ class Client extends JFrame implements ActionListener {
         JScrollPane jsmr = new JScrollPane();
         monthpanel.add(jsmr, monthright);
         monthpanel.add(jsmr);
-        
+
         //addmonth button
-        
         JButton addmonthbutton = new JButton("add month");
         addmonthbutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -74,26 +71,50 @@ class Client extends JFrame implements ActionListener {
             }
         });
         add(addmonthbutton);
-        
-        
+
         //day pick panel
-        
-        
         JPanel daypanel = new JPanel();
         JLabel daylabel = new JLabel("pick a Day");
         this.add(daylabel);
         this.add(daypanel);
-        
-        
+
+        //daylistleft
+        JList dayleft = new JList(day);
+        daypanel.add(dayleft);
+        dayleft.setVisibleRowCount(3);
+        dayleft.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        JScrollPane jsdl = new JScrollPane();
+        monthpanel.add(jsdl, dayleft);
+        monthpanel.add(jsdl);
+
+        //daylistright
+        JList dayright = new JList();
+        monthpanel.add(dayright);
+        dayright.setVisibleRowCount(3);
+        dayright.setFixedCellWidth(100);
+        dayright.setFixedCellHeight(30);
+        dayright.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        JScrollPane jsdr = new JScrollPane();
+        monthpanel.add(jsdr, dayright);
+        monthpanel.add(jsdr);
+
+        //addmonth button
+        JButton addDaybutton = new JButton("add Day");
+        addDaybutton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                String[] selected = {(String) dayleft.getSelectedValue()};
+                dayright.setListData(selected);
+            }
+        });
+        add(addDaybutton);
+
         // time pick panel
-        
         JPanel timepanel = new JPanel();
         JLabel timelabel = new JLabel("pick time");
         this.add(timelabel);
         this.add(timepanel);
-        
+
         //timelistleft
-        
         JList leftlist = new JList(time);
         timepanel.add(leftlist);
         leftlist.setVisibleRowCount(3);
@@ -101,9 +122,8 @@ class Client extends JFrame implements ActionListener {
         JScrollPane js = new JScrollPane();
         timepanel.add(js, leftlist);
         timepanel.add(js);
-        
-        //timelistright
 
+        //timelistright
         JList rightlist = new JList();
         timepanel.add(rightlist);
         rightlist.setVisibleRowCount(3);
@@ -113,9 +133,8 @@ class Client extends JFrame implements ActionListener {
         JScrollPane jsr = new JScrollPane();
         timepanel.add(jsr, rightlist);
         timepanel.add(jsr);
-        
-        //addtime button
 
+        //addtime button
         JButton addtimebutton = new JButton("add Time");
         addtimebutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -124,8 +143,18 @@ class Client extends JFrame implements ActionListener {
             }
         });
         add(addtimebutton);
+        //logout button
 
-//        
+        JButton logout = new JButton("logout");
+        this.add(logout);
+        logout.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        add(logout);
     }
 
     @Override
