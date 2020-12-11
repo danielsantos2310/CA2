@@ -25,8 +25,10 @@ class Client extends JFrame implements ActionListener {
 
 //    private JList leftlist;
 //    private JList rightlist;
-//    private JButton movebutton;
+//    private JButton addtimebutton;
     private static String[] time = {"08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"};
+    private static String[] month = {"Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"};
+    private static String[] day = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 
     public Client() {
         this.setVisible(true);
@@ -34,18 +36,64 @@ class Client extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
 
-        //Date pick panel
+        //month pick panel
+        JPanel monthpanel = new JPanel();
+        JLabel monthlabel = new JLabel("pick a month");
+        this.add(monthlabel);
+        this.add(monthpanel);
+        
+        //monthlistleft
+        
+        JList Monthleft = new JList(month);
+        monthpanel.add(Monthleft);
+        Monthleft.setVisibleRowCount(3);
+        Monthleft.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        JScrollPane jsml = new JScrollPane();
+        monthpanel.add(jsml, Monthleft);
+        monthpanel.add(jsml);
+        
+        //monthlistright
+        
+        JList monthright = new JList();
+        monthpanel.add(monthright);
+        monthright.setVisibleRowCount(3);
+        monthright.setFixedCellWidth(100);
+        monthright.setFixedCellHeight(30);
+        monthright.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        JScrollPane jsmr = new JScrollPane();
+        monthpanel.add(jsmr, monthright);
+        monthpanel.add(jsmr);
+        
+        //addmonth button
+        
+        JButton addmonthbutton = new JButton("add month");
+        addmonthbutton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                String[] selected = {(String) Monthleft.getSelectedValue()};
+                monthright.setListData(selected);
+            }
+        });
+        add(addmonthbutton);
         
         
+        //day pick panel
         
         
+        JPanel daypanel = new JPanel();
+        JLabel daylabel = new JLabel("pick a Day");
+        this.add(daylabel);
+        this.add(daypanel);
         
-        // time pick panel  
+        
+        // time pick panel
+        
         JPanel timepanel = new JPanel();
         JLabel timelabel = new JLabel("pick time");
         this.add(timelabel);
-//        timelabel.setAlignmentY(TOP_ALIGNMENT);
         this.add(timepanel);
+        
+        //timelistleft
+        
         JList leftlist = new JList(time);
         timepanel.add(leftlist);
         leftlist.setVisibleRowCount(3);
@@ -53,6 +101,8 @@ class Client extends JFrame implements ActionListener {
         JScrollPane js = new JScrollPane();
         timepanel.add(js, leftlist);
         timepanel.add(js);
+        
+        //timelistright
 
         JList rightlist = new JList();
         timepanel.add(rightlist);
@@ -63,15 +113,17 @@ class Client extends JFrame implements ActionListener {
         JScrollPane jsr = new JScrollPane();
         timepanel.add(jsr, rightlist);
         timepanel.add(jsr);
+        
+        //addtime button
 
-        JButton movebutton = new JButton("add Day");
-        movebutton.addActionListener(new ActionListener() {
+        JButton addtimebutton = new JButton("add Time");
+        addtimebutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 String[] selected = {(String) leftlist.getSelectedValue()};
                 rightlist.setListData(selected);
             }
         });
-        add(movebutton);
+        add(addtimebutton);
 
 //        
     }
