@@ -6,20 +6,10 @@
 package login;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Calendar;
-import java.util.Date;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -31,46 +21,59 @@ import javax.swing.ListSelectionModel;
  *
  * @author Daniel Santos
  */
-class Client extends JFrame implements ActionListener{
+class Client extends JFrame implements ActionListener {
 
 //    private JList leftlist;
 //    private JList rightlist;
 //    private JButton movebutton;
-    private static String[] time = {"08:00", "09:00", "09:00", "09:00", "09:00", "09:00"};
+    private static String[] time = {"08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"};
 
     public Client() {
         this.setVisible(true);
         this.setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
+
+        //Date pick panel
+        
+        
+        
+        
+        
+        // time pick panel  
         JPanel timepanel = new JPanel();
+        JLabel timelabel = new JLabel("pick time");
+        this.add(timelabel);
+//        timelabel.setAlignmentY(TOP_ALIGNMENT);
         this.add(timepanel);
-       JList leftlist = new JList(time);
-       timepanel.add(leftlist);
+        JList leftlist = new JList(time);
+        timepanel.add(leftlist);
         leftlist.setVisibleRowCount(3);
         leftlist.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         JScrollPane js = new JScrollPane();
         timepanel.add(js, leftlist);
         timepanel.add(js);
-        
+
         JList rightlist = new JList();
+        timepanel.add(rightlist);
         rightlist.setVisibleRowCount(3);
         rightlist.setFixedCellWidth(100);
         rightlist.setFixedCellHeight(30);
         rightlist.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         JScrollPane jsr = new JScrollPane();
-        this.add(jsr, rightlist);
+        timepanel.add(jsr, rightlist);
+        timepanel.add(jsr);
 
         JButton movebutton = new JButton("add Day");
         movebutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                rightlist.setListData((Object[]) leftlist.getSelectedValue());
+                String[] selected = {(String) leftlist.getSelectedValue()};
+                rightlist.setListData(selected);
             }
         });
         add(movebutton);
-        
-//        
 
+//        
     }
 
     @Override
