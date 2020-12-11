@@ -118,7 +118,12 @@ public class LOGIN extends JFrame implements ActionListener {
 
         if (clientemail.equals(email) && Arrays.equals(password, clientpassword)) {
             this.dispose();
-            new Client();
+            new Client();            
+        }
+        else  {
+            this.dispose();
+            new Barber();
+            
         }
     }
 
