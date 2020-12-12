@@ -151,7 +151,7 @@ class Client extends JFrame implements ActionListener {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                logout.getActionCommand();
+            logout.getAction();
 
             }
         });
