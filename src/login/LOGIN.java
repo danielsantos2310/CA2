@@ -35,7 +35,7 @@ public class LOGIN extends JFrame implements ActionListener {
     public LOGIN() {
         super("Daniel's Barbear");
         this.setVisible(true);
-        this.setSize(800, 600);
+        this.setSize(600, 400);
         BorderLayout frameLayout = new BorderLayout();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(frameLayout);
