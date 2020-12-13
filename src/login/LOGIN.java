@@ -27,6 +27,7 @@ public class LOGIN extends JFrame implements ActionListener {
 
     JTextField emailuserfield;
     JPasswordField loginpasswordfield;
+    JLabel invalidCredentials;
 
     public static void main(String[] args) {
         new LOGIN();
@@ -66,6 +67,10 @@ public class LOGIN extends JFrame implements ActionListener {
         loginpasswordfield = new JPasswordField(20);
         loginpasswordfield.setMaximumSize(loginpasswordfield.getPreferredSize());
         loginaccount.add(loginpasswordfield);
+        
+         invalidCredentials = new JLabel("Invalid credentials");
+        invalidCredentials.setVisible(false);
+        loginaccount.add(invalidCredentials);
 
         //Button Login
         JButton loginbutton = new JButton("Login");
@@ -118,19 +123,24 @@ public class LOGIN extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String email = emailuserfield.getText();
-        String clientemail = "client";
+             String email = emailuserfield.getText();
         char[] password = loginpasswordfield.getPassword();
+
+        String clientemail = "client";
         char[] clientpassword = {'c', 'l', 'i', 'e', 'n', 't'};
+
+        String barberEmail = "barber";
+        char[] barberPassword = {'b', 'a', 'r', 'b', 'e', 'r'};
 
         if (clientemail.equals(email) && Arrays.equals(password, clientpassword)) {
             this.dispose();
-            new Client();            
+            new Client();
         }
-        else  {
+        else  if (barberEmail.equals(email) && Arrays.equals(password, barberPassword)) {
             this.dispose();
             new Barber();
-            
+        } else {
+            invalidCredentials.setVisible(true);
         }
     }
 
