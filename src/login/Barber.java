@@ -8,26 +8,86 @@ package login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author Daniel Santos
  */
-class Barber extends JFrame implements ActionListener {
+class Barber extends JFrame implements TableModel{
+    JMenuBar bar = new JMenuBar();
+    JMenu menu1 = new JMenu ("close") ;
+    JMenuItem exit =new JMenuItem ("exit");
 
     public Barber() {
+        setJMenuBar (bar);
+        bar.add(menu1);
+        menu1.add(exit);
+        exit.addActionListener(new ActionListener (){
+        public void actionPerformed(ActionEvent e){
+        System.exit(0);}
+        });
+        
         this.setVisible(true);
         this.setSize(1200, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+//        JMenu barbermenu = new JMenu ();
+//        this.add(barbermenu);
         
         
         
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public int getRowCount() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public int getColumnCount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getColumnName(int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addTableModelListener(TableModelListener l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeTableModelListener(TableModelListener l) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+  
+    }
     
-}
+

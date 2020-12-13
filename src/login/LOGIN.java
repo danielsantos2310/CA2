@@ -106,7 +106,14 @@ public class LOGIN extends JFrame implements ActionListener {
         //Button create account
         JButton createaccountbutton = new JButton("submit");
         createaccountpanel.add(createaccountbutton);
+        
+        //menu and close button
 
+        
+        
+                
+        
+        
     }
 
     @Override
